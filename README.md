@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="logo.svg" alt="Tywindb Logo" width="150">
+<img src="assets/logo.svg" alt="Tywindb Logo" width="150">
 
 # 🗄️ Tywindb
 
