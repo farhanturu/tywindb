@@ -1,12 +1,14 @@
 <div align="center">
 
+<img src="logo.svg" alt="Tywindb Logo" width="150">
+
 # 🗄️ Tywindb
 
 **A Modern, Secure, and Feature-Rich Embedded Database**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Rust](https://img.shields.io/badge/Built%20with-Rust-orange.svg)](https://www.rust-lang.org/)
-[![Version](https://img.shields.io/badge/Version-0.97-green.svg)](https://github.com/paong-dev/tywindb/releases)
+[![Version](https://img.shields.io/badge/Version-0.97-green.svg)](https://github.com/farhanturu/tywindb/releases)
 
 [Features](#features) • [Quick Start](#quick-start) • [Commands](#commands) • [Comparison](#comparison) • [Contributing](#contributing)
 
