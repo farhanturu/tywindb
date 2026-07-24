@@ -1,0 +1,75 @@
+Tywindb
+Copyright (c) 2026 Tywindb Contributors
+
+This software is licensed under the MIT License.
+
+---
+
+Third-Party Dependencies:
+
+This project uses the following open-source dependencies:
+
+1. serde (MIT License)
+   - Serialization framework for Rust
+   
+2. serde_json (MIT License)
+   - JSON support for serde
+
+3. bincode (MIT License)
+   - Binary encoder/decoder
+
+4. thiserror (MIT or Apache-2.0 License)
+   - Derive macro for standard library Error traits
+
+5. anyhow (MIT or Apache-2.0 License)
+   - Flexible error handling
+
+6. clap (MIT or Apache-2.0 License)
+   - Command line argument parser
+
+7. tokio (MIT License)
+   - Asynchronous runtime
+
+8. blake3 (CC0 1.0 License)
+   - BLAKE3 cryptographic hash function
+
+9. lz4 (BSD-2-Clause License)
+   - LZ4 compression
+
+10. chrono (MIT or Apache-2.0 License)
+    - Date and time library
+
+11. uuid (MIT or Apache-2.0 License)
+    - UUID generation
+
+12. regex (MIT or Apache-2.0 License)
+    - Regular expressions
+
+13. tracing (MIT License)
+    - Application-level tracing
+
+14. tracing-subscriber (MIT License)
+    - Subscriber implementation for tracing
+
+---
+
+Acknowledgments:
+
+Tywindb is inspired by and builds upon the work of:
+
+- SQLite (Public Domain) — The most deployed database
+- DuckDB (MIT License) — The OLAP king
+- SurrealDB (BSL 1.1 License) — Multi-model pioneer
+- Redis (BSD-3-Clause License) — In-memory performance
+- PostgreSQL (PostgreSQL License) — The world's most advanced database
+
+---
+
+Derivative Works Notice:
+
+If you create a modified version or fork of Tywindb, you must:
+1. Retain the original "Tywindb" name in the project title
+2. Include the LICENSE file in its entirety
+3. Add a notice of your modifications
+
+Example: "This project is a fork of Tywindb, modified by [Your Name]"

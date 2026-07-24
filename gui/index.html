@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tywindb — Database Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.svg" alt="Tywindb" class="logo">
+                <h1>Tywindb</h1>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Database</h3>
+                <div class="db-info">
+                    <span class="status-dot connected"></span>
+                    <span id="db-name">mydb.tdb</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Tables</h3>
+                <ul id="table-list" class="table-list">
+                    <li class="loading">Loading...</li>
+                </ul>
+                <button id="refresh-tables" class="btn btn-sm">Refresh</button>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Quick Actions</h3>
+                <button id="btn-new-table" class="btn btn-outline">+ New Table</button>
+                <button id="btn-export" class="btn btn-outline">Export Data</button>
+                <button id="btn-import" class="btn btn-outline">Import Data</button>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h2>Query Editor</h2>
+                </div>
+                <div class="header-right">
+                    <span class="version">v0.1.0</span>
+                    <button id="btn-help" class="btn btn-icon">?</button>
+                </div>
+            </header>
+            
+            <!-- Query Editor -->
+            <div class="editor-section">
+                <div class="editor-toolbar">
+                    <button id="btn-run" class="btn btn-primary">
+                        <span class="icon">▶</span> Run Query
+                    </button>
+                    <button id="btn-clear" class="btn btn-outline">Clear</button>
+                    <button id="btn-format" class="btn btn-outline">Format</button>
+                    <div class="editor-options">
+                        <label>
+                            <input type="checkbox" id="auto-run" checked>
+                            Auto-run on Enter
+                        </label>
+                    </div>
+                </div>
+                <div class="editor-container">
+                    <textarea id="query-editor" placeholder="Enter your SQL query here...">SELECT * FROM users;</textarea>
+                </div>
+            </div>
+            
+            <!-- Results Section -->
+            <div class="results-section">
+                <div class="results-header">
+                    <h3>Results</h3>
+                    <div class="results-info">
+                        <span id="result-count">0 rows</span>
+                        <span id="execution-time">0ms</span>
+                    </div>
+                </div>
+                <div class="results-container">
+                    <div id="results-table" class="results-table">
+                        <div class="empty-state">
+                            <p>Run a query to see results</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-footer">
+                    <button id="btn-copy-results" class="btn btn-sm">Copy to Clipboard</button>
+                    <button id="btn-export-results" class="btn btn-sm">Export as CSV</button>
+                </div>
+            </div>
+            
+            <!-- Status Bar -->
+            <footer class="status-bar">
+                <div class="status-left">
+                    <span class="status-dot connected"></span>
+                    <span id="connection-status">Connected</span>
+                </div>
+                <div class="status-right">
+                    <span id="table-count">0 tables</span>
+                    <span id="last-query">Last query: --</span>
+                </div>
+            </footer>
+        </main>
+    </div>
+    
+    <!-- Modal: Create Table -->
+    <div id="modal-create-table" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Table</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="table-name">Table Name</label>
+                    <input type="text" id="table-name" placeholder="e.g., users">
+                </div>
+                <div class="form-group">
+                    <label>Columns</label>
+                    <div id="columns-list">
+                        <div class="column-row">
+                            <input type="text" placeholder="Column name" class="col-name">
+                            <select class="col-type">
+                                <option value="INTEGER">INTEGER</option>
+                                <option value="TEXT">TEXT</option>
+                                <option value="FLOAT">FLOAT</option>
+                                <option value="BOOLEAN">BOOLEAN</option>
+                                <option value="BLOB">BLOB</option>
+                            </select>
+                            <label><input type="checkbox" class="col-primary"> PK</label>
+                            <label><input type="checkbox" class="col-notnull" checked> NN</label>
+                            <button class="btn btn-icon btn-danger remove-col">&times;</button>
+                        </div>
+                    </div>
+                    <button id="btn-add-column" class="btn btn-sm btn-outline">+ Add Column</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-cancel">Cancel</button>
+                <button id="btn-create-table" class="btn btn-primary">Create Table</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal: Help -->
+    <div id="modal-help" class="modal hidden">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h3>Tywindb Help</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="help-section">
+                    <h4>SQL Commands</h4>
+                    <pre>
+-- Create table
+CREATE TABLE users (id INTEGER, name TEXT, email TEXT);
+
+-- Insert data
+INSERT INTO users (id, name, email) VALUES (1, 'John', 'john@example.com');
+
+-- Query data
+SELECT * FROM users WHERE id = 1;
+
+-- Update data
+UPDATE users SET email = 'new@example.com' WHERE id = 1;
+
+-- Delete data
+DELETE FROM users WHERE id = 1;
+
+-- Transactions
+BEGIN;
+INSERT INTO users (id, name, email) VALUES (2, 'Jane', 'jane@example.com');
+COMMIT;</pre>
+                </div>
+                <div class="help-section">
+                    <h4>Keyboard Shortcuts</h4>
+                    <ul>
+                        <li><kbd>Ctrl</kbd> + <kbd>Enter</kbd> — Run query</li>
+                        <li><kbd>Ctrl</kbd> + <kbd>L</kbd> — Clear editor</li>
+                        <li><kbd>Ctrl</kbd> + <kbd>S</kbd> — Save query</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary modal-close">Got it!</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

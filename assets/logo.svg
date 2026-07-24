@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F7C948;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D3436;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#636E72;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="120" fill="#FAFAFA" rx="12"/>
+  
+  <!-- Icon: Stylized database with lightning bolt -->
+  <g transform="translate(20, 20)">
+    <!-- Database cylinder -->
+    <ellipse cx="40" cy="20" rx="35" ry="12" fill="url(#grad1)" stroke="#E55A2B" stroke-width="2"/>
+    <rect x="5" y="20" width="70" height="50" fill="url(#grad1)" stroke="none"/>
+    <ellipse cx="40" cy="70" rx="35" ry="12" fill="#E55A2B" stroke="#D44A1B" stroke-width="2"/>
+    
+    <!-- Lightning bolt (speed) -->
+    <path d="M45 25 L35 45 L45 45 L35 65" stroke="#FFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Speed lines -->
+    <line x1="80" y1="35" x2="95" y2="35" stroke="#FF6B35" stroke-width="3" stroke-linecap="round"/>
+    <line x1="85" y1="45" x2="100" y2="45" stroke="#FF6B35" stroke-width="3" stroke-linecap="round"/>
+    <line x1="80" y1="55" x2="95" y2="55" stroke="#FF6B35" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Text: Tywindb -->
+  <text x="140" y="75" font-family="'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif" font-size="48" font-weight="700" fill="#2D3436">
+    Tywindb
+  </text>
+  
+  <!-- Tagline -->
+  <text x="142" y="100" font-family="'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif" font-size="14" font-weight="400" fill="#636E72">
+    Fast. Simple. Modern.
+  </text>
+</svg>
