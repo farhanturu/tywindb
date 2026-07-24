@@ -1,13 +1,12 @@
 [package]
 name = "tywindb"
-version = "0.1.0"
+version = "0.97.0"
 edition = "2021"
-description = "A modern, fast, and easy-to-use database"
+description = "A modern, secure, and feature-rich embedded database"
 license = "MIT"
-authors = ["Tywindb Contributors"]
-repository = "https://github.com/tywindb/tywindb"
-homepage = "https://tywindb.dev"
-documentation = "https://docs.rs/tywindb"
+authors = ["Paong"]
+repository = "https://github.com/farhanturu/tywindb"
+homepage = "https://github.com/farhanturu/tywindb"
 readme = "README.md"
 keywords = ["database", "sql", "embedded", "vector", "document"]
 categories = ["database", "embedded"]
