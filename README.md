@@ -21,6 +21,10 @@
 
 ---
 
+https://github.com/user-attachments/assets/tywindb-intro.mp4
+
+---
+
 ## ✨ What is Tywindb?
 
 Tywindb is a modern embedded database built in Rust that combines the best features from SQLite, PostgreSQL, and MongoDB into a single, easy-to-use package. It's designed for developers who need:

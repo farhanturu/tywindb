@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tywindb Animation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .logo-wrapper {
+            position: relative;
+        }
+
+        .logo-glow {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            z-index: 1;
+            animation: scaleIn 0.6s ease 0.3s both;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .text-wrapper {
+            text-align: center;
+            opacity: 0;
+            animation: slideUp 0.8s ease 0.8s forwards;
+        }
+
+        .brand-name {
+            font-size: 64px;
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: -2px;
+        }
+
+        .brand-name span {
+            color: #FF6B35;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: #6B7280;
+            margin-top: 8px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .version-badge {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 20px;
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 20px;
+            color: #FF6B35;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            animation: fadeIn 0.5s ease 1.5s forwards;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FF6B35;
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 3s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { left: 20%; top: 30%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 80%; top: 20%; animation-delay: 0.5s; }
+        .particle:nth-child(3) { left: 15%; top: 70%; animation-delay: 1s; }
+        .particle:nth-child(4) { left: 85%; top: 60%; animation-delay: 1.5s; }
+        .particle:nth-child(5) { left: 50%; top: 15%; animation-delay: 2s; }
+        .particle:nth-child(6) { left: 30%; top: 85%; animation-delay: 2.5s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from { 
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.4;
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { 
+                opacity: 0;
+                transform: translateY(0);
+            }
+            50% { 
+                opacity: 0.6;
+                transform: translateY(-20px);
+            }
+        }
+
+        .lightning {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            opacity: 0;
+            animation: lightningFlash 0.1s ease 0.5s;
+        }
+
+        @keyframes lightningFlash {
+            0% { opacity: 0; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <div class="logo-wrapper">
+            <div class="logo-glow"></div>
+            <div class="logo">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#F7C948;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="100" cy="100" r="90" fill="url(#grad1)"/>
+                    <ellipse cx="100" cy="60" rx="45" ry="15" fill="#fff" opacity="0.9"/>
+                    <rect x="55" y="60" width="90" height="60" fill="#fff" opacity="0.9"/>
+                    <ellipse cx="100" cy="120" rx="45" ry="15" fill="#fff" opacity="0.9"/>
+                    <path d="M105 65 L90 95 L105 95 L90 125" stroke="url(#grad1)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="130" y1="75" x2="150" y2="75" stroke="#FF6B35" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="135" y1="95" x2="155" y2="95" stroke="#FF6B35" stroke-width="4" stroke-linecap="round"/>
+                    <line x1="130" y1="115" x2="150" y2="115" stroke="#FF6B35" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="lightning"></div>
+        </div>
+        
+        <div class="text-wrapper">
+            <div class="brand-name">Ty<span>windb</span></div>
+            <div class="tagline">Fast. Simple. Secure.</div>
+        </div>
+
+        <div class="version-badge">Version 0.97</div>
+    </div>
+</body>
+</html>
