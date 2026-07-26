@@ -18,11 +18,6 @@
 </a>
 
 </div>
-
----
-
-https://github.com/farhanturu/tywindb/assets/tywindb-logo.mp4
-
 ---
 
 ## What is Tywindb?
